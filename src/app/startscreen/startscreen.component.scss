@@ -8,7 +8,6 @@
     align-items: center;
     .start-image {
         height: 100vh;
-        filter: blur(2px);
     }
     .click-text {
         position: absolute;
@@ -22,7 +21,7 @@
 
 .start-button {
     position: absolute;
-    width: 230px;
+    width: 235px;
     &:hover {
         transform: scale(1.1);
         filter: drop-shadow(0 0 2rem #F5DFB3);
