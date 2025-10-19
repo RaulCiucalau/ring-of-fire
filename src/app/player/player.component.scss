@@ -1,0 +1,85 @@
+.player {
+    display: flex;
+    align-items: center;
+    width: 280px;
+    height: 90px;
+    border-radius: 45px;
+    background: linear-gradient(135deg, #00d4aa 0%, #00a8cc 100%);
+    box-shadow: 
+        0 8px 32px rgba(0, 212, 170, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+            0 12px 40px rgba(0, 212, 170, 0.4),
+            0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        border-radius: inherit;
+        pointer-events: none;
+    }
+    
+    span {
+        font-size: 16px;
+        font-weight: 600;
+        margin-left: 16px;
+        color: #ffffff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        letter-spacing: 0.5px;
+        flex: 1;
+    }
+    
+    img {
+        object-fit: cover;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        margin: 10px 0 10px 12px;
+        border: 3px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        
+        &:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 1);
+        }
+    }
+}
+
+.player.active {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+    animation: pulse 2s infinite;
+    
+    &:hover {
+        box-shadow: 
+            0 12px 40px rgba(255, 107, 107, 0.4),
+            0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 
+            0 8px 32px rgba(255, 107, 107, 0.3),
+            0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 12px 40px rgba(255, 107, 107, 0.5),
+            0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+}
