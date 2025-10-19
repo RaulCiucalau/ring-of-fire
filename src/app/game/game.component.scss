@@ -15,6 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     img {
         position: absolute;
         width: 130px;
@@ -26,9 +27,15 @@
 .top-card {
     cursor: pointer;
     transition: all 125ms ease-in-out;
+
     &:hover {
         transform: scale(1.1);
     }
+}
+
+.played-card {
+    right: 25px;
+    transform: translateX(200px) translateY(-220px) rotate(-10deg);
 }
 
 .pick-card {
@@ -40,13 +47,69 @@
     0% {
         transform: scale(1);
     }
+
     40% {
         transform: scale(1.7);
     }
+
     60% {
         transform: scale(1.7);
     }
+
     100% {
         transform: scale(1) translateX(200px) translateY(-220px) rotate(-10deg);
+    }
+}
+
+.player-position {
+    position: absolute;
+    right: 0;
+}
+
+.add-player-btn {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #00d4aa 0%, #00a8cc 100%) !important;
+    box-shadow: 
+        0 8px 25px rgba(0, 212, 170, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    
+    &:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 
+            0 12px 35px rgba(0, 212, 170, 0.5),
+            0 6px 20px rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    &:active {
+        transform: translateY(-1px) scale(0.95);
+    }
+    
+    mat-icon {
+        color: white;
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    // Pulse animation when hovering
+    &:hover mat-icon {
+        animation: pulse-icon 0.6s ease-in-out;
+    }
+}
+
+@keyframes pulse-icon {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
     }
 }
