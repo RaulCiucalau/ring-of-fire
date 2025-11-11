@@ -6,18 +6,24 @@ import { Game } from '../../models/game';
 import { PlayerComponent } from "../player/player.component";
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { GameInfoComponent } from "../game-info/game-info.component";
+import { MatIcon } from '@angular/material/icon';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-game',
   standalone: true,
   imports: [
-    NgStyle, 
-    NgForOf, 
-    NgIf, 
-    MatButtonModule, 
-    MatIconModule, 
-    PlayerComponent
-  ],
+    NgStyle,
+    NgForOf,
+    NgIf,
+    MatButtonModule,
+    MatIconModule,
+    MatSnackBarModule,
+    PlayerComponent,
+    GameInfoComponent,
+    MatIcon
+],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
@@ -26,13 +32,22 @@ export class GameComponent {
   currentCard = '';
   game: Game = new Game();
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.newGame();
   }
 
   takeCard() {
+    if (this.game.players.length < 2) {
+      this.snackBar.open('Please add at least 2 players to start the game!', 'OK', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      });
+      return;
+    }
+    
     if (!this.pickCardAnimation) {
       const card = this.game.stack.pop();
       if (card) {
