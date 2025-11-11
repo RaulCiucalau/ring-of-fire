@@ -15,6 +15,8 @@
     </div>
 </div>
 
+<app-game-info *ngIf="currentCard" [card]="currentCard" class="pin-bottom"></app-game-info>
+
 <button mat-fab class="add-player-btn" (click)="openDialog()">
     <mat-icon>person_add</mat-icon>
 </button>
