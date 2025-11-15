@@ -41,7 +41,7 @@ export class GameComponent {
   takeCard() {
     if (this.game.players.length < 2) {
       this.snackBar.open('Please add at least 2 players to start the game!', 'OK', {
-        duration: 3000,
+        duration: 4000,
         horizontalPosition: 'center',
         verticalPosition: 'top',
       });
